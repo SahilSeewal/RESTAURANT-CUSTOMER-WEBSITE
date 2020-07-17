@@ -1,0 +1,41 @@
+#dd{
+    float: float;
+    margin-left:0px;
+    margin-top:20px;
+    width: 90%;
+    border: thin silver solid;
+    
+    padding: 0.5em;
+    text-align: center;
+    font-style: italic;
+    font-size: 20px;
+    padding-right:50px;
+    text-indent: 0;
+}
+.pull-r{
+    margin-left:500px;
+    font-size:20px;
+    color:blue;
+   
+}
+.pull-l{
+    text-align:left;
+    margin-top:0px;
+    font-weight:strong;
+    font-size:30px;
+    
+}
+
+#desc{
+    margin-top:30px;
+    margin-bottom:30px;
+}
+#rw{
+    margin-left:300px;
+}
+#im{
+    margin-top:100px;
+   
+    width: 90%;
+    height: 400px;
+}

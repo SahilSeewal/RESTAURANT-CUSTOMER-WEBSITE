@@ -1,0 +1,61 @@
+<!-- Include Header -->
+<% include ../../partials/head %>
+<link rel="stylesheet" type="text/css" href="/static/css/guestdashboard.css" type="text/css">
+
+<!-- Include Header -->
+<% include ../../partials/navs/userNav %>
+
+<div class="container">
+
+  <% if (guestSignupMessage.length > 0) { %>
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <%= guestSignupMessage %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+  <% } else %>
+
+  <h1>Guest Dashboard</h1>
+<span><a href = "/" style="color:white; font-size:20px;margin-left:1000px;"class="btn btn-info">Visit Food Items</a></span>
+<figure-cap>
+  <p style="font-size:20px;"><strong>Name:       </strong>           <span class="d"><%= guestFirstName + " " + guestLastName %></span></p>
+  <p style="font-size:20px;"><strong>Email:      </strong>           <span class="d"><%= guestEmail %></span></p>
+  <p style="font-size:20px;"><strong>Address 1:   </strong>       <span class="d1"><%= guestAddressLineOne %></span></p>
+  <p style="font-size:20px;"><strong>Address 2:   </strong>          <span class="d1"><%= guestAddressLineTwo %></span></p>
+  <p style="font-size:20px;"><strong>City:        </strong>          <span class="d2"><%= guestCity %></span></p>
+  <p style="font-size:20px;"><strong>State:       </strong>          <span class="d3"><%= guestState %></span></p>
+  <p style="font-size:20px;"><strong>Zip Code:     </strong>         <span class="d4"><%= guestZipCode %></span></p>
+  </figure-cap>
+</div>
+<h3 style="font-size:40px;text-align:center;">Ordered Food</h3>
+<div class="container text-center" style="margin-left:50px;">
+  <table border="1" style="margin-top:20px;" 
+  cellpadding="35"> 
+  <tr> 
+    <th>Dish</th> 
+    <th>Dish Name</th>
+    <th>Dish Type</th> 
+    <th>Dish Rating</th>
+    <th>Dish Price</th>
+    <th>Restaurant Name</th>
+    <th>Restaurant Email</th>  
+</tr> 
+  <% order.forEach(function(order){ %>
+<div class="col-lg-4 col-md-4 col-sm-6">
+    <tr> 
+          <td><img src="<%= order.image %>" height = "200vh"  width = "300vw"></td> 
+          <td><%= order.dish %></td>
+          <td><%= order.foodtype %></td> 
+          <td><%= order.rating %> <span style= "color:orange" class="fa fa-star"></span></td> 
+          <td>$ <%= order.price %></td>
+          <td><%= order.RestaurantName%></td>
+          <td><%= order.Restaurantemail %></td>
+        </tr> 
+<% }) %>
+</table> 
+</div>
+
+
+<!-- Include Footer -->
+<% include ../../partials/footer %>

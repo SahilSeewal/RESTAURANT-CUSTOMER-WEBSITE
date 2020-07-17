@@ -1,0 +1,94 @@
+<!-- Include Header -->
+<% include ../partials/head %>
+<link rel="stylesheet" type="text/css" href="/static/css/index.css" type="text/css">
+<link href='https://fonts.googleapis.com/css?family=Alfa Slab One' rel='stylesheet'>
+
+<!-- Include Header -->
+<% if (userExists) { %>
+  <% include ../partials/navs/userNav %>
+<% } else { %>
+  <% include ../partials/navs/nav %>
+<% } %>
+
+<% if (doNotAllowSignUp && doNotAllowSignUp.length > 0) { %>
+  <div class="container-fluid">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <%= doNotAllowSignUp %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+
+  <% } if (doNotAllowAddFood && doNotAllowAddFood.length > 0) { %>
+  <div class="container-fluid">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <%= doNotAllowAddFood %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+<% }if (notguest && notguest.length > 0) { %>
+  <div class="container-fluid">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <%- notguest %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+<% }if (notrestaurant && notrestaurant.length > 0) { %>
+  <div class="container-fluid">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <%- notrestaurant %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+<% }else %>
+    <div class="jumbotron bg-white text-center">
+      <div class="container-fluid">
+      <h1 class="display-3">Food Point</h1>
+      <p class="lead">Life is infinitely delicious.</p>
+      <p class="lead">
+        <a class="btn btn-outline-dark" href="/restaurant/signup" role="button">Sign up as Restaurant</a>
+        <a class="btn btn-dark" href="/guest/signup">Sign up as Guest</a>
+      </p>
+    </div>
+  </div>
+<h1 style="text-align:center;">DELICIOUS FOOD AVAILABLE ! </h1>
+
+<form class="container-fluid text-center" method = "get" action = "/foodfilter">    
+      <div style="font-size:20px;margin-top:20px; margin-bottom:40px;font-weight: 500;">Food Type :- <select name = "foodtype">
+          <option>Both</option>
+          <option>Veg</option>
+          <option>Non Veg</option>
+          </select>
+      <input type = "submit" value = "Apply"></div>
+      </span>
+</form>
+
+  <div class="container">
+    <div class="row" style="margin-top:20px;display:flex;flex-wrap:wrap;text-align:center;justify-content: space-between;">    
+      <% food.forEach(function(food){ %>
+  <div class="col-lg-4 col-md-4 col-sm-6">    
+      <div id="cap">
+      <img src="<%= food.image %>" id="im">
+      <div style="text-align:center;">
+      <h4> <%= food.dish %> </h4>
+      <p id ="rate" style="font-size:20px;"><%= food.rating %>  <span style= "color:orange" class="fa fa-star"></span> </p>
+      </div>
+      <p><a href="/foodInfo/<%= food._id %>" class="btn btn-primary">More Info</a></p>
+  </div>
+</div>
+<% }) %>
+</div>
+</div>
+
+
+
+
+<!-- Include Footer -->
+<% include ../partials/footer %>

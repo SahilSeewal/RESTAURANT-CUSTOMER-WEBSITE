@@ -1,0 +1,41 @@
+<!-- Include Header -->
+<% include ../partials/head %>
+<link rel="stylesheet" type="text/css" href="/static/css/foodinfo.css" type="text/css">
+<!-- Include Header -->
+<% if (userExists) { %>
+  <% include ../partials/navs/userNav %>
+<% } else { %>
+  <% include ../partials/navs/nav %>
+<% } %>
+
+    <div class="row" id = "rw"> 
+                
+                <div class="col-md-9">
+                    <div class="thumbnail">    
+                    <img id = "im"src="<%= food.image %>">
+                    
+                            <div id="dd" class="caption-full">
+                           <h4 class="pull-r">
+                                 $ <%=food.price %>/piece   
+                                </h4>
+                                <h4 class="pull-l"><a><%= food.dish %></a></h4>
+                                    
+                                <h3 id="desc">Description</h3> <span><form method="post" action="/guest/orderNow/<%=food._id%>"><button style="margin-bottom:50px;" type="submit" class="btn btn-success"><b>Order Now !!</b></button></form></span>
+                                <b><p>Food Type :- </b><a><%= food.foodtype %></a></p>
+                                <b><p>Food rating :- </b><a><%= food.rating %></a> <span style= "color:orange" class="fa fa-star"></span></p>
+                                <b><p>Restraunt Name :- </b><a><%= food.RestaurantName %></a></p>  
+                                <b><p>Restraunt Email :- </b><a><%= food.email %></a></p>
+                                <b><p>Restraunt Address Line 1 :- </b><a><%= food.address.lineOne %></a></p>
+                                <b><p>Restraunt Address Line 2 :- </b><a><%= food.address.lineTwo %></a></p>
+                                <b><p>Restraunt City :- </b><a><%= food.address.city %></a></p>
+                                <b><p>Restraunt State :- </b><a><%= food.address.state %></a></p> 
+                                <b><p>Restraunt Zip :- </b><a><%= food.address.zip %></a></p>
+                                                 
+                                
+                                    
+        </div>
+        </div>
+        </div>
+        </div>
+<!-- Include Footer -->
+<% include ../partials/footer %>

@@ -1,0 +1,56 @@
+<!-- Include Header -->
+<% include ../../partials/head %>
+
+<!-- Include Header -->
+<% include ../../partials/navs/userNav %>
+
+<div  class="container-fluid row" style="margin-left: 350px;">
+      <div class="col-6">
+        <h1 class="text-center mb-4">Add New Dish</h1>
+<form method = "post" action = "/restaurant/addFood">
+
+    <div class="form-row">
+    <div class="form-group col">
+      <label for="dish">Dish Name</label>
+      <input name="dish" type="text" class="form-control" id="dish_name" placeholder="Dish Name" required>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col">
+      <label for="foodtype">Food Type</label>
+      <select name="foodtype">
+        <option value="Veg">Veg</option>
+        <option value="Non Veg">Non Veg</option>
+        </select>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col">
+      <label for="image">Dish Image Url</label>
+      <input name="image" type="text" class="form-control" id="dish_image" placeholder="Dish Image url" required>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col">
+      <label for="rating">Dish Rating</label>
+      <input name="rating" type="text" class="form-control" id="dish_rating" placeholder="Dish Rating" required>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col">
+      <label for="price">Price</label>
+     <span>$ <input name="price" type="text" class="form-control" id="dish_rating" placeholder="Price" required></span>
+    </div>
+  </div>
+
+  <input type="submit" value ="ADD NEW DISH !!!">
+</form>
+</div>
+</div>
+
+<!-- Include Footer -->
+<% include ../../partials/footer %>

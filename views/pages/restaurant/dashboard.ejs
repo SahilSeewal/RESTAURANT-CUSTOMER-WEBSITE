@@ -1,0 +1,73 @@
+<!-- Include Header -->
+<% include ../../partials/head %>
+<link rel="stylesheet" type="text/css" href="/static/css/restaurantdashboard.css" type="text/css">
+<!-- Include Header -->
+<% include ../../partials/navs/userNav %>
+
+<div class="container">
+<% if (residentSignupMessage.length > 0) { %>
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <%= residentSignupMessage %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+  <% }if(dishadded && dishadded.length > 0){%>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <%= dishadded %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button> 
+    </div> 
+  <%}if(removeDishSuccess && removeDishSuccess.length > 0){%>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <%- removeDishSuccess %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button> 
+    </div>
+  <% }else %>
+<div style="margin-bottom:10px;margin-left:30px;">
+  <h1 style="text-align:center;"><b>Restaurant Dashboard</b></h1>
+<a href = "/restaurant/addFood" class="btn btn-success" style="margin-left:1000px;width:150px;height:50px;"><span style="font-size:17px;">ADD NEW DISH</span></a>
+<a href = "/restaurant/orderedFood" class="btn btn-warning" style="margin-top:20px;margin-left:1000px;width:160px;height:50px;color:white;"><span style="font-size:17px;">ORDERED DISHES</span></a>
+<figure-cap>
+<p style="font-size:25px;"><strong>Restaurant Name:</strong> <%= restaurantName %></p>
+  <p style="font-size:25px;"><strong>Email:</strong> <%= restaurantEmail %></p>
+  <p style="font-size:25px;"><strong>Address 1:</strong> <%= restaurantAddressLineOne %></p>
+  <p style="font-size:25px;"><strong>Address 2:</strong> <%= restaurantAddressLineTwo %></p>
+  <p style="font-size:25px;"><strong>City:</strong> <%= restaurantCity %></p>
+  <p style="font-size:25px;"><strong>State:</strong> <%= restaurantState %></p>
+  <p style="font-size:25px;"><strong>Zip Code:</strong> <%= restaurantZipCode %></p>
+</figure-cap>
+</div>
+</div>
+<h3>Dishes available in <b><%= restaurantName%></b></h3>
+
+<div class="container text-center" style="margin-left:130px;">
+    <table border="1" style="margin-top:20px;" 
+    cellpadding="35"> 
+ <caption><b><%= restaurantName %></b> restaurant dishes</caption> 
+    <tr> 
+      <th>Dish</th> 
+      <th>Dish Name</th>
+      <th>Dish Type</th> 
+      <th>Dish Rating</th>
+      <th>Dish Price</th>
+      <th>Remove Dish</th> 
+  </tr> 
+    <% food.forEach(function(food){ %>
+<div class="col-lg-4 col-md-4 col-sm-6">
+      <tr> 
+            <td><img src="<%= food.image %>" height = "200vh"  width = "300vw"></td> 
+            <td><%= food.dish %></td>
+            <td><%= food.foodtype %></td> 
+            <td><%= food.rating %> <span style= "color:orange" class="fa fa-star"></span></td> 
+            <td>$ <%= food.price %></td>
+            <td><form method="post" action = "restaurant/removeDish/<%=food._id%>"><button class="btn btn-danger" >Remove Dish</button></form></td>
+          </tr> 
+<% }) %>
+</table> 
+</div>
+<!-- Include Footer -->
+<% include ../../partials/footer %>

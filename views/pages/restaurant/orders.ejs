@@ -1,0 +1,35 @@
+<!-- Include Header -->
+<% include ../../partials/head %>
+<!-- Include Header -->
+<% include ../../partials/navs/userNav %>
+
+<div class="container">
+<h1 style="text-align:center;">Orders of <%= restaurantName %></h1>
+</div>
+<div class="container text-center" style="margin-left:2px;">
+    <table border="1" style="margin-top:20px;" cellpadding="35"> 
+    <tr> 
+      <th>Dish</th> 
+      <th>Dish Name</th>
+      <th>Dish Type</th> 
+      <th>Dish Price</th>
+      <th>Customer Name</th>
+      <th>Customer Email</th>
+      <th style="padding:100px">Customer Address</th> 
+  </tr> 
+    <% order.forEach(function(order){ %>
+<div class="col-lg-4 col-md-4 col-sm-6">
+      <tr> 
+            <td><img src="<%= order.image %>" height = "200vh"  width = "300vw"></td> 
+            <td><%= order.dish %></td>
+            <td><%= order.foodtype %></td> 
+            <td>$ <%= order.price %></td>
+            <td><%= order.custFirstName %> <%= order.custLastName %></td>
+            <td><%= order.Guestemail %></td>
+            <td><%= order.lineOne %>, <%= order.lineTwo %>, <%= order.city %>, <%= order.state %>, <%= order.zip %></td>  
+        </tr> 
+<% }) %>
+</table> 
+</div>
+</div>
+<% include ../../partials/footer %>
